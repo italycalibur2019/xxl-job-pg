@@ -149,7 +149,8 @@ CREATE TABLE public.xxl_job_registry (
                                   registry_key varchar(255) NOT NULL,
                                   registry_value varchar(255) NOT NULL,
                                   update_time timestamp NOT NULL DEFAULT current_timestamp,
-                                  PRIMARY KEY (id)
+                                  PRIMARY KEY (id),
+                                  UNIQUE (registry_group, registry_key, registry_value)
 );
 CREATE INDEX i_g_k_v ON public.xxl_job_registry (registry_group,registry_key,registry_value);
 CREATE INDEX i_u ON public.xxl_job_registry (update_time);
